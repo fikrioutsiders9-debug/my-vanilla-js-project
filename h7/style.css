@@ -1,0 +1,567 @@
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --bg-color:#979494;
+            --text-color:#ffffff;
+            --btn-color:#706d6d;
+            --reverse-bgcolor:#524e4e;
+        }
+        body.dark-mode {
+            --bg-color:#524e4e !important;
+            --text-color:#ffffff;
+            --btn-color:#292828;
+            --reverse-bgcolor:#979494;
+        }
+        body.dark-mode .card {
+        background-color: #333;
+        color: white;}
+
+    #services {
+            scroll-margin-top:90px;  /*BIAR SCROLLNYA AGAK KEBAWAH, GA KETUTUP NAVBAR*/
+        }
+
+
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;  
+            padding: 0; /* MARGIN DAN PADDING 0 BIAR GA ADA JARAK BAWAAN BROWSER */
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        .navbar {
+            display:flex; /*MENGAKTIFKAN MODE BARIS BIAR SEJAJAR KESAMPING*/
+            flex-wrap: wrap; /*BIAR KALO KEKEPENUHAN /LAYAR KEKECILAN BISA NURUN KE BAWAH*/
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-color);
+            padding: 0px 30px; 
+            box-sizing: border-box; /* BIAR PADDING GA NGELEBARIN UKURAN ELEMEN */
+            color:#ffffff;
+            position:sticky; /* BIAR MENU NAVIGASI TETEP KELIATAN PAS USER SCROLL KEBAWAH*/
+            top:0; /* TEMPELNYA DI ATAS */
+            z-index:100; /*BIAR DI LAYER PALING ATAS GA KETUTUP LAYER/ELEMEN LAIN*/
+            transition: all 0.3s ease;
+        }
+        .hamburger{
+            position:fixed;
+            top:35px;
+            right:30px;
+            width:30px;
+            height:25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index:103;
+        }
+        .hamburger span{
+            width:100%;
+            height:3px;
+            border : 1px solid #121111;
+            background-color: #ffffff;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hamburger.active span:nth-child(1){
+            transform: translateY(11px) rotate(135deg);
+        }
+        .hamburger.active span:nth-child(2){
+            opacity:0;
+        }
+        .hamburger.active span:nth-child(3){
+            transform: translateY(-10px) rotate(-135deg);
+        }
+        
+        .sidebar{
+            position:fixed;
+            top:0;
+            right: -350px;
+            width:280px;
+            height:100vh;
+            z-index:102;
+            background-color:var(--bg-color);
+            transition: all 0.4s  cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding:50px 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.9);
+        }
+        .sidebar.active{
+            right:-30px;
+        }
+        .linkNav{
+            display: flex;
+            flex-direction: column;
+            gap:20px;
+        }
+        .overlaySidebar{
+            position: fixed;
+            width:100%;
+            height:100%;
+            z-index:101;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+        }
+        .overlaySidebar.active{
+            display: block;
+        }
+
+        .customAlert {
+            position:fixed;
+            top:-150px;
+            left:50%;
+            transform:translateX(-50%);
+            z-index: 10000;
+            opacity:0;
+            background:var(--bg-color);
+            min-width:320px;
+            padding:20px 30px;
+            box-shadow:0 15px 30px rgba(0,0,0,0.30);
+            text-align: center;
+            transition: all 0.8s cubic-bezier(0.175,0.885,0.32,1.275);
+        }
+        .alertShow{
+            opacity: 1;
+            top: 30px!important;
+        }
+        .darkbtn {
+            text-decoration:none;
+            border:none;
+            background:none;
+            color:white;
+            font:inherit;
+            cursor:pointer;
+
+        }
+        .darkbtn:hover{
+            color:#ffdd00;
+        }
+
+        .menu-item {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left:20px;
+            transition: 0.3s;
+            margin: 15px 15px;
+        }
+        .menu-item:hover {
+            color: #ffdd00;
+        }
+        .hero {
+            min-height: 100vh;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            text-align : center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Lynae_Convene_Still.webp');
+            image-rendering:optimizeQuality;
+            background-size: cover; 
+            background-position: center;
+            position: relative; /*BIAR overlay NEMPEL DI HERO*/
+            color:white;
+        }
+        .overlay {/* LAPISAN WARNA GRADIENT DI ATAS GAMBAR HERO */
+            position: absolute; /* MENGAMBANG DI ATAS HERO */
+            bottom: 0; 
+            left:0;
+            height: 100%;
+            width:100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('charlotta wp.jpg');
+            image-rendering:optimizeQuality; /* BIAR GAMBAR GA KESAMARAN */
+            background-size: cover;  /* BIAR GAMBAR NEMPEL KE SELURUH BAGIAN */
+            background-position: center;
+            opacity :0; 
+            transition : opacity 0.8s ease;
+            z-index: 1; /* BIAR DI BAWAH TEKS HERO */
+        }
+        .hero-content {
+            z-index: 2; /* ANGKA PALING GEDE= LAPISAN PALING ATAS */
+        }
+        .hero-content h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+            transition : opacity 0.8s ease; transform: 0,4 ease ;
+        }
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .inputNama-Services {
+            height: 10px;
+            width:112px;
+            margin-top: 30px;
+            text-decoration: none;
+            outline: none;
+            padding: 10px 10px;
+            border-radius: 5px;
+            border: 1px solid #106af1;
+        }
+        .inputNama-Services:focus {
+            outline: none;
+            border-color: #01bb14;
+            box-shadow: 0 0 10px rgba(3, 133, 220, 0.5);
+            transition: 0.3s;
+        }
+        
+        .btn-hapus{
+            padding: 5px 15px;
+            margin-top: 20px;
+            background-color: var(--bg-color);
+            border: 1.6px solid red;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: 0.3s;
+            font-style:inherit; /*BIAR FONT SAMA KAYA SEKITAR*/
+            display: inline-block; 
+        }
+        .btn-hapus:hover{
+            background: rgb(155, 0, 0);
+        }
+        .btn-edit{
+            padding: 5px 15px;
+            width:80px;
+            margin-top: 20px;
+            border: 1.6px solid var(--reverse-bgcolor);
+            background-color: var(--bg-color);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: 0.3s;
+            font-style:inherit; /*BIAR FONT SAMA KAYA SEKITAR*/
+            display: inline-block; 
+        }
+        .btn-edit:hover{
+            background-color: var(--btn-collor);
+        }
+        .btn-main {
+            padding: 15px 30px;
+            margin-top: 20px;
+            background-color: var(--bg-color);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 20px;
+            transition: 0.3s;
+            font-style:inherit;
+            display: inline-block; /*BIAR GA NGELEBARIN UKURAN ELEMEN*/
+        }
+        .btn-main:hover {
+            background-color:var(--btn-color);
+            letter-spacing: 2px;
+        }
+
+        .btn-input{
+            height: 32px;
+            width: 132px;
+            padding:7px 7px;
+            border-radius: 5px;
+            margin-top: 30px;
+            background-color:var(--bg-color);
+            color: white;
+        }
+        .btn-input:hover{
+            background-color: var(--btn-color);
+        }
+
+        #card-services{
+            display:flex;
+            flex-wrap: wrap; /* BIAR KALO KEKEPENUHAN /LAYAR KEKECILAN BISA NURUN KE BAWAH*/
+            justify-content:space-between; /*POSISI ELEMEN*/
+            gap: 50px;
+            padding: 50px 50px;
+            max-width: 1100px;
+        }
+        .services {
+            display:flex;
+            flex-wrap: wrap;
+            justify-content:center;
+            background-color: var(--bg-color);
+            color: #121111;
+            transition : all 0.3s ease;
+        }
+        .inputSearchServicesAndAddServices{
+            display:flex;
+            flex-wrap: wrap;
+            justify-content:baseline;
+            gap:3px;
+            
+        }
+        #inputSearch {
+            margin-left: 10%;
+        }
+        .btnSortIcon {
+            margin-right: 35px;
+        }
+
+        .searchWrapper{
+            position: relative; /*BATASIN ABSOLUTE BIAR GA KELUAR DARI SINI*/
+            width:100%;
+            max-width: 500px;
+        }
+        .sort-container{
+            display: flex;
+            gap: 3px;
+        }
+        .sort-container button{
+            margin-top: 30px;
+            background: none;
+            text-decoration: none;
+            color:#ffffff;
+            padding: 7px 7px;
+            border-radius: 5px;
+        }
+        .sort-container button:hover{
+            background: var(--btn-color);
+        }
+        .hidden{
+            display: none!important;
+        }
+        .sortMenu{
+            position:absolute; /*NGAMBANG TAPI DIBATASI RELATIVE */
+            top:100%;
+            right:0;
+            gap: 5px;
+            background:var(--bg-color);
+            border: 2px solid #555;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            z-index:10;
+            margin-top:5px;
+            width:99%;
+            padding:3px ;
+        }
+        .sortMenu button{
+            background: none;
+            padding: 10px;
+            color: #ffffff;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+        }
+        .sortMenu button:hover {
+            background: var(--btn-color);
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #ecebeb;
+            padding: 30px;
+            max-width: 250px; /* UKURAN FIX BIAR KONSISTEN */
+            width:90%;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 10px 8px rgba(0,0,0,0.6);
+            transition: 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 20px 16px rgba(0,0,0,0.9);
+            transform: translateY(-10px);
+        }
+        .sumarryBox{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .sumarryItem{
+            max-width:430px;
+            width:90%;
+            background-color: #ffffff;
+            color:#121111;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border:1px solid #106af1;
+            box-sizing: border-box; /* WAJIB: Biar padding ga ngerusak ukuran lebar */
+        }
+        
+        .totalSumarry{
+            font-weight:700;
+            font-size:large;
+        }
+        .footer {
+            background-color: #2c3e50;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .footer-content {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .socials i {
+            color: #3498db;
+            text-decoration: none;
+            margin: 15px 15px;
+            transition: 0.3s;
+            display: inline-block; /* WAJIB BUAT INI BIAR TRANSFORM JALAN */
+        }
+        .socials i:hover {
+            color: #ffffff;
+            transform:scale(1.5) translateY(-10px) rotate(360deg);
+            
+        }
+        
+
+        .contact {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: var(--bg-color);
+            color:var(--text-color);
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto; /* CARA SAKTI BIAR KOTAK FORM DI TENGAH */
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #232323;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .contact-form button {
+            padding: 15px;
+            background-color: #2c3e50;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #121b24;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+            transition: 0.3s;
+        }
+
+        @keyframes fadeInUp { /*preset animasi*/
+            from {
+                opacity :0;
+                visibility: visible;
+                transform: translateY(30px);
+            }
+            to {
+                opacity:1;
+                visibility: visible;
+                transform:translateY(0);
+            }
+        }
+        @keyframes fadeOutDown { /*preset animasi*/
+            from {
+                opacity :1;
+                transform: translateY(0);
+            }
+            to {
+                opacity:0;
+                transform:translateY(30px);
+            }
+        }
+        .card-reveal {
+            opacity: 0;
+            visibility: hidden;
+            animation: fadeInUp 0.6s ease-out forwards; /*fowards biar ga balik posisi awal*/
+        }
+        .card-delete {
+            animation: fadeOutDown 0.4s ease-in forwards ;
+        }
+
+
+        @media screen and (max-width:771px) {  /* RESPONSIVE BIAR KALO LAYAR KEKECILAN GA BERANTAKAN /LAYAR HP*/
+            /* 1. Paksa Body & Container gak boleh bocor ke samping */
+        body, html {
+                width: 100%;
+        }
+            
+           .navbar {
+                position: sticky;
+                top:0;
+                z-index: 100;
+            }
+            .logo h1{
+                font-size: 30px;
+            }
+            .hamburger{
+                position:fixed;
+                top:35px;
+                right:30px;
+                z-index:103;
+            }
+            .menu-item{
+                display:block;
+                
+                font-size: 0.8rem;
+                margin:0px;
+                
+            }
+           .hero{
+                background-position: 70%;
+            }
+            .overlay{
+                 background-position: 70%;
+            }
+            .card {
+                width: 90%;
+                margin-bottom: 15px;
+            }
+            .hero-content h1 {
+                font-size: 30px;
+            }
+            .hero-content h2 {
+                font-size: 20px;
+            }
+        #card-services{
+            justify-content: center;
+        }
+       
+      
+         #services {
+            scroll-margin-top:80px;  /*BIAR SCROLLNYA AGAK KEBAWAH, GA KETUTUP NAVBAR*/
+        }
+        }
+
+        @media screen and (max-width:525px) {
+            .sort-container{
+                justify-content: center;
+            }
+            #addService{
+                justify-content: center;
+                gap:5px;
+                width: 80%;
+            }
+
+            #btnNewServices{
+                margin-top: 5px;
+            }
+            }
+        @media screen and (max-width:513px){
+            #priceServices{
+                margin-top: 5px;
+            }
+       
+        }
+        @media screen and (max-width:340px){
+            #descriptionServices{
+                margin-top: 5px;
+            }
+            #addService{
+                justify-content: center;
+                flex-direction: column;
+            }
+            .inputNama-Services{
+                width:90%;
+            }
+        }

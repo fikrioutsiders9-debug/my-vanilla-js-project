@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--PENTING BUAT MEDIA QUERY/TAMPILAN HP-->
+    <title>Fikri project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fontawesome.com/"><!-- PRECONNECT BUAT NYAMBUNGIN KE SERVER LINK JADI LOAD LEBIH CEPET -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"> <!--REL=RELATIONSHIP/ HUBUNGAN LINK, STYLESHEET=GAYA/CSS-->
+    <link rel="stylesheet" href="style.css"> <!--LINK KE FILE CSS-->
+    
+</head>
+<body>
+    <!-- START NAVBAR SECTION/HEADER -->
+    <header class="navbar">
+    <div class="logo">
+        <h1>FikriDev</h1>
+    </div>
+    </header>
+    <!-- END NAVBAR SECTION/HEADER -->
+     <!--START HAMBURGER-->
+       <div class="hamburger" id="menuNav">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!--END HAMBURGER-->
+    <!--START SIDEBAR-->
+    <div class="sidebar" id="mySidebar">
+    <nav> <!-- NAV BUKAN DIV BIAR GOOGLE KENAL INI NAVIGASI BUKAN KOTAK/TEKS BIASA-->
+    <div class="linkNav">
+        <a href="#hero" class="menu-item">Home</a>
+        <a href="#services" class="menu-item">Services</a>     
+        <a href="#contact" class="menu-item">Contact</a>
+        <div class="darkbtn menu-item" id="darkToggle">Switch to dark</div>
+    </div>
+    </nav>
+    </div>
+    <div class="overlaySidebar" id="overlaySidebar"></div>
+    <!--END SIDEBAR-->
+    <!--START CUSTOM ALERT-->
+     <div class="customAlert">
+        <p>Misi sukses! Selamat datang di dunia IT</p>
+     </div>
+     <!-- START HERO SECTION/INTRO -->
+    <section class="hero" id="hero"> <!--PAKE ID BIAR LINK NAV NYAMBUNG KE SINI -->
+        <div class="overlay"></div> <!--BIAR WARNA GRADIENT NYAMPUR BACKGROUND GAMBAR-->
+        <div class="hero-content">
+            <h1>Hi, I'm Fikri</h1>
+            <h2>I'm a future web developer | Learning everyday</h2>
+            <div class="input-group">
+                <input class="inputNama-Services" type="text" id="inputNama" placeholder="Ketik nama lo..">
+                <button class="btn-input" id="btnSimpan" onclick=updateNama() disabled>Simpan nama</button>
+            </div>
+            <button class="btn-hapus" onclick="hapusData()">Restart data</button><br>
+            <button class="btn-main" id="btnStart"onclick="togle()" disabled>Start!</button> <!--ONCLICK BUAT EVENT KALO DIKLIK MAU NGAPAIN-->
+        </div>
+    </section>
+    <!-- END HERO SECTION/INTRO -->
+     <!-- START SERVICES SECTION/PELAYANAN  -->
+    <section class="services" id="services">
+        <!-- CARD PAKE DISPLAY FLEX BIAR RAPI KESAMPING -->
+    <div class="searchWrapper">
+        <div class="sort-container">
+            <input type="text" class="inputNama-Services" style="width:100%; max-width:230px; text-align: center;" id="inputSearch" placeholder="Search Services..">
+            <input type="number" class="inputNama-Services"  style="width:100%; max-width:230px; text-align: center;" id="inputBudget" placeholder="Max Budget (USD)">
+            <button id="btnSort" class="btnSortIcon">
+            <i class="fa-solid fa-up-down"></i></button>
+        </div>
+        <div class="sortMenu hidden" id="sortMenu">
+            <button id="sortDefault" class="btn-sort">Semua</button>
+            <button id="sortLow" class="btn-sort">Termurah</button>
+            <button id="sortHigh" class="btn-sort">Termahal</button>
+        </div>
+    </div>
+        <div id="addService"class="inputSearchServicesAndAddServices">
+            <input type="text" class="inputNama-Services" id="newServices" placeholder="Add new service">
+            <input type="text" class="inputNama-Services" id="descriptionServices" placeholder="Description services">
+            <input type="number" class="inputNama-Services" id="priceServices" placeholder="Price Services">
+            <button id="btnCancelEdit" style="display:none"class="btn-input">Cancel Edit</button>
+            <button id="btnNewServices"class="btn-input">Add Service</button>
+        </div>
+        <div id="card-services"></div>
+   
+    <div class="sumarryBox"  >
+        <div class="sumarryItem" >Total Services: <span class="totalSumarry" id="total-count">0</span></div>
+        <div class="sumarryItem" >Total Investmen: <span class="totalSumarry" id="total-price">Rp.0</span>
+        <p>Total Investment (USD): <span class="totalSumarry" id="total-usd">$0.00</span></p>
+        </div>
+        
+    </div>
+    </section>
+    <!-- END SERVICES SECTION/PELAYANAN  -->
+     <!-- START CONTACT SECTION/ HUBUNGI SAYA  -->
+    <section class="contact" id="contact">
+        <h2>Contact Me</h2>
+        <form class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea placeholder="Your massage" rows="5"required></textarea>
+            <button type="Submit">Send</button>
+        </form>
+    </section>
+    <!-- END CONTACT SECTION/ HUBUNGI SAYA  -->
+     <!-- START FOOTER SECTION/ BAGIAN BAWAH  -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 FikriDev. All rights reserved.</p>
+        </div>
+        <div class="socials">
+            <a href="https://www.instagram.com/vyxzz_"target="blank"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="#"><i class="fab fa-github fa-2x"></i></a>
+            <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a href="https://www.tiktok.com/@somethingaboutvyxz"target="_blank"><i class="fab fa-tiktok fa-2x"></i></a>
+        </div>
+
+    </footer>
+    <!-- END FOOTER SECTION/ BAGIAN BAWAH  -->
+     <script src="theme.js"></script>
+     <script src="services.js"></script>
+     <script src="script.js"></script>
+     </body>
+     </html>

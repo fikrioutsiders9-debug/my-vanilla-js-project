@@ -1,0 +1,93 @@
+//1. VARIABLE /let (TEMPAT NYIMEN DATA)
+        let nama = "";
+        let status = "Web Developer";
+        let ischanced = false;
+
+        //2. FUNCTION (BUNGKUS PERINTAH BIAR BISA DIPANGGIL KAPAN AJA)
+        function togle(){ //UBAH TEKS HERO DAN WALLPAPER
+            let overlay= document.querySelector('.hero .overlay');
+            let judul= document.querySelector('.hero h1');
+            let button= document.querySelector('.btn-main');
+            if(ischanced == false){
+                overlay.style.opacity = "1"; //UBAH OPACITY OVERLAY JADI 1, BIAR GAMBAR GA TRANSPARAN LAGI
+                judul.style.opacity = "0";
+                setTimeout(() => {  //TRANSISI EFEK HILANG BENTAR/JEDA PERINTAH
+                    judul.style.opacity = "1";
+                    judul.style.transform = "translateY(-8px)";
+                }, 300); //BIAR TEKS MUNCUL SETELAH OVERLAY MUNCUL
+                judul.innerText = "lu berhasil " + nama + "!"; //GANTI TEKS H1 DI HERO
+                button.innerText = "Done " + nama + "!";
+                ischanced = true;
+            } else {
+                overlay.style.opacity = "0";
+                judul.style.opacity = "0";
+                setTimeout(() => {
+                    judul.style.opacity = "1";
+                    judul.style.transform = "translateY(0px)";
+                }, 300); //BIAR TEKS MUNCUL SETELAH OVERLAY MUNCUL
+                judul.innerText = "Welcome " + nama + "!"; //GANTI TEKS H1 DI HERO
+                button.innerText = "Start " + nama + "!";
+                ischanced = false;
+            }
+    }
+
+        function updateNama(){ //FUNCTION BUAT NGAMBIL DATA DARI INPUTAN
+            let isiInput = document.getElementById('inputNama').value; // GET ELEMENT BY ID BUAT NGAMBIL ELEMENT, .value BUAT NGAMBIL ISI ELEMENT
+            if(isiInput ==""){
+                alert("Nama ga boleh kosong bro!");
+            } else {
+                nama = isiInput;
+                localStorage.setItem('namaUser',nama); //SIMEN DATA KE LOCALSTORAGE
+                alert('Nama lo udah disimpen ' + nama);
+                document.querySelector('.hero h1').innerText ='Welcome ' + nama + '!';
+                document.querySelector('.input-group').style.display='none';
+             }
+        }
+        let namaTersimpan = localStorage.getItem('namaUser'); //NGAMBIL DATA DARI LOCALSTORAGE
+        if (namaTersimpan){
+            nama = namaTersimpan;
+        }
+        
+        function hapusData(){
+            if(confirm('Yakin mau ngehapus data?'))//CONFIRM BUAT KONFIRMASI DULU
+            localStorage.removeItem('namaUser');
+            localStorage.removeItem('theme'); //HAPUS DATA DI LOCALSTORAGE
+            location.reload(); //RELOAD PAGE BIAR KAYAK BARU LAGI/ document.querySelector('.hero h1').innerText = 'Welcome '+ nama + '!';
+               // 
+        }
+
+        //PANGGIL FUNCTIONNYA
+        //3.EVENT /onclick (PEMICU PERINTAH) BIASA DIKASIH DI ATTRIBUTE HTML
+        
+        //EVENTLISTENER=PERINTAH STANDBY, DOMXONTENTLOADED=TUNGGU WEB KE LOAD TANPA MEDIA
+        //START BUAT LOCAL STORAGE WEB=DATA NAMA,TEMA, FUNCTION TEKS BUTTON
+        document.addEventListener('DOMContentLoaded',function () { 
+            if(namaTersimpan){
+                document.querySelector('.hero h1').innerText = 'Welcome '+ nama + '!';
+                document.querySelector('.input-group').style.display='none'; 
+        }
+            const btnToggle = document.querySelector('#darkToggle');
+            const temaTersimpan= localStorage.getItem('theme');
+        //LOCAL STORAGE BUTTON THEME
+        if (temaTersimpan ==='dark'){
+            document.body.classList.add('dark-mode');
+            btnToggle.innerText='Switch to light';
+        }
+        //BUTTON DARK MODE
+        btnToggle.addEventListener('click',function(){
+            console.log("Tombol dipencet, Bro!");
+            document.body.classList.toggle('dark-mode'); //BUAT SAKELAR 
+            let statusTema;
+        if (document.body.classList.contains('dark-mode')){  //CEK DARK MODE KEPASANG BELUM
+           statusTema ='dark';
+           this.innerText='Switch to light';
+         } else {
+             statusTema ='light';
+           this.innerText='Switch to dark';
+         }
+         localStorage.setItem('theme',statusTema,); 
+        console.log('Tema sekarang '+ statusTema);
+
+        });
+        });
+

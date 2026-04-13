@@ -1,4 +1,4 @@
-     const btnToggle = document.querySelector('#darkToggle');
+    const btnToggle = document.querySelector('#darkToggle');
     const temaTersimpan = localStorage.getItem('theme');
  // Cek Tema
     if (temaTersimpan === 'dark') {

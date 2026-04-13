@@ -24,20 +24,6 @@ function simpanDataServices() {
     currentData=[...services];
 }
 
-function hapusJasa(index){
-    if(confirm('Sure to delete this service?')){
-    const allCards= document.querySelectorAll('.card'); //kumpulin kartu jasa/services
-    const targetCard =allCards[index]; // target kartu yg mau dihapus, index dpt dari hapusJasa(index)
-    targetCard.classList.add('card-delete');//tambahin css animasi
-    setTimeout(() =>{
-    services.splice(index, 1); //hapus data array pake urutan index, 1= jumlah yg mau dihapus
-    simpanDataServices();
-    renderServices();
-    },400);
-    }
-}
-
-
 let editIndex=null;
 function editJasa(index) {
     editIndex=index;
@@ -243,6 +229,28 @@ function updateSummary(data=services){
         elementUSD.innerText = formatUSD(totalDalamUSD);
     }
 }
+
+function hapusJasa(index){
+    if(confirm('Sure to delete this service?')){
+    const allCards= document.querySelectorAll('.card'); //kumpulin kartu jasa/services
+    const targetCard =allCards[index]; // target kartu yg mau dihapus, index dpt dari hapusJasa(index)
+    targetCard.classList.add('card-delete');//tambahin css animasi
+    setTimeout(() =>{
+    services.splice(index, 1); //hapus data array pake urutan index, 1= jumlah yg mau dihapus
+    simpanDataServices();
+    renderServices();
+    },400);
+    }
+}
+
+    //Reset data
+function hapusData() {
+    if (confirm('Yakin mau ngehapus data?')) { // TAMBAHIN KURUNG INI
+        localStorage.removeItem('dataServices');
+        location.reload();
+    }
+}
+
 //FORMAT HARGA
 function formatRupiah(angka) {
     return new Intl.NumberFormat('id-ID',{  //OTOMATIS TAMBAHIN RP, TITIK, KOMA

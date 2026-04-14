@@ -222,6 +222,44 @@ body {
   color: black;
 }
 
+.easySteps h1{
+  text-align: center;
+  letter-spacing: 3px;
+  margin: 50px;
+}
+
+.containerSteps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:30px;
+}
+
+.cardSteps {
+  position: relative;
+  width: 300px;
+  overflow: hidden; /* Biar kalau angkanya kegedean tetep kepotong rapi */
+}
+
+.icon-steps svg{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  stroke: var(--btn-color);
+}
+
+.step-number {
+  position: absolute;
+    top: -10px;    /* Sedikit keluar ke atas biar estetik */
+    right: 10px;   /* Di pojok kanan */
+    font-size: 6rem; /* Ukuran super gede */
+    font-weight: 900;
+    color: rgba(17, 17, 17, 0.174); /* Warna (branding) dengan opacity 10% */
+    line-height: 1;
+    z-index: 0;    /* Taro di paling belakang */
+    user-select: none; /* Biar gak bisa di-highlight teksnya */
+}
+
 .inputServices {
   height: 10px;
   width: 112px;

@@ -35,7 +35,7 @@ const services = [
 function renderLandingPage() {
     const cardContainer = document.getElementById('card-services');
     const htmlCards = services.map((item) => `
-        <div class="card">
+        <div class="card card-reveal">
             <div class="icon-steps" style="margin-bottom: 20px;">
                 ${item.icon}
             </div>

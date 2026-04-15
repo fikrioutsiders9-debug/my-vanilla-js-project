@@ -15,11 +15,12 @@
 <body>
   <header class="navbar">
     <div class="logo">
-      <h1>Vyxzz</h1>
+      <a href="#hero" class="menu-item">Vyxzz</a>  
     </div>
     <nav>
       <div class="linkNav">
-        <a href="#hero" class="menu-item">Home</a>
+        <a href="#process" class="menu-item">Process</a>
+        <a href="#why-us" class="menu-item">Solutions</a>
         <a href="#services" class="menu-item">Services</a>
         <a href="#contact" class="menu-item">Contact</a>
       </div>
@@ -35,7 +36,8 @@
   <div class="sidebar" id="mySidebar">
     <nav>
       <div class="linkSidebar">
-        <a href="#hero" class="menu-item">Home</a>
+        <a href="#process" class="menu-item">Process</a>
+        <a href="#why-us" class="menu-item">Solutions</a>
         <a href="#services" class="menu-item">Services</a>
         <a href="#contact" class="menu-item">Contact</a>
       </div>
@@ -46,16 +48,16 @@
   <section class="hero" id="hero">
     <div class="overlay"></div>
     <div class="hero-content">
-      <h1>Building Digital Experiences with Vyxzz</h1>
+      <h1>Building <span>Digital Experiences </span>with Vyxzz</h1>
       <h2>Helping you turn creative ideas into professional digital reality</h2>
       <div class="hero-cta">
-        <a href="https://wa.me/+6285852911768" target="_blank" rel="noopener noreferrer" class="btn-create">Create Your Website</a>
+        <a href="#contact"  class="btn-create">Create Your Website</a>
         <a href="https://github.com/fikrioutsiders9-debug/my-vanilla-js-project" target="_blank" rel="noopener noreferrer" class="btn-outline">View Portfolio</a>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="process">
     <div class="easySteps">
       <h1>Easy Steps <span>to Create a Website</span></h1>
       <div class="containerSteps" id="easy-steps"></div>
@@ -102,15 +104,18 @@
     <div id="card-services"></div>
   </section>
 
-  <section class="contact" id="contact">
-    <h2>Contact Me</h2>
-    <form class="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea placeholder="Your message" rows="5" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+  <section id="contact" class="contact">
+  <div class="container-contact">
+    <div class="contact-header">
+      <h2>Have a <span>Project in Mind?</span></h2>
+      <p>Let's talk about how we can bring your ideas to life. Click below to start a conversation.</p>
+    </div>
+    
+    <a href="https://wa.me/6281234567890?text=Hi Vyxzz! I am interested in your service." target="_blank" rel="noopener noreferrer" class="btn-whatsapp" target="_blank">
+      <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+    </a>
+  </div>
+</section>
 
   <footer class="footer">
     <div class="footer-content">
